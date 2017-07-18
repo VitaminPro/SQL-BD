@@ -1,0 +1,11 @@
+c:\users\ринат\documents\visual studio 2015\Projects\WorkingWithBD\WorkingWithBD\bin\Debug\WorkingWithBD.exe.config
+c:\users\ринат\documents\visual studio 2015\Projects\WorkingWithBD\WorkingWithBD\obj\Debug\WorkingWithBD.csprojResolveAssemblyReference.cache
+c:\users\ринат\documents\visual studio 2015\Projects\WorkingWithBD\WorkingWithBD\obj\Debug\WorkingWithBD.Form1.resources
+c:\users\ринат\documents\visual studio 2015\Projects\WorkingWithBD\WorkingWithBD\obj\Debug\WorkingWithBD.Properties.Resources.resources
+c:\users\ринат\documents\visual studio 2015\Projects\WorkingWithBD\WorkingWithBD\obj\Debug\WorkingWithBD.csproj.GenerateResource.Cache
+c:\users\ринат\documents\visual studio 2015\Projects\WorkingWithBD\WorkingWithBD\bin\Debug\WorkingWithBD.exe
+c:\users\ринат\documents\visual studio 2015\Projects\WorkingWithBD\WorkingWithBD\bin\Debug\WorkingWithBD.pdb
+c:\users\ринат\documents\visual studio 2015\Projects\WorkingWithBD\WorkingWithBD\obj\Debug\WorkingWithBD.exe
+c:\users\ринат\documents\visual studio 2015\Projects\WorkingWithBD\WorkingWithBD\obj\Debug\WorkingWithBD.pdb
+c:\users\ринат\documents\visual studio 2015\Projects\WorkingWithBD\WorkingWithBD\bin\Debug\Database.mdf
+c:\users\ринат\documents\visual studio 2015\Projects\WorkingWithBD\WorkingWithBD\bin\Debug\Database_log.ldf
