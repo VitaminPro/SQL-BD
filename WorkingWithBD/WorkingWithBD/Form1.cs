@@ -28,7 +28,13 @@ namespace WorkingWithBD
                 !string.IsNullOrEmpty(textBox2.Text) && !string.IsNullOrWhiteSpace(textBox2.Text))
             {
                 SportProductShop n2 = new SportProductShop();
-                 n2.AddNewProduct(textBox1.Text, textBox2.Text);
+                SportProduct n1 = new SportProduct()
+                {
+                    Name = Convert.ToString(textBox1.Text),
+                    Price = Convert.ToDecimal(textBox2.Text)
+                };
+
+                n2.AddNewProduct(n1);
                
             }
             else
@@ -108,7 +114,8 @@ namespace WorkingWithBD
 
         private  void button2_Click(object sender, EventArgs e) //Изменение
         {
-            
+
+            SportProductShop n2 = new SportProductShop();
 
             if (!label8.Visible)
                 label8.Visible = false;
@@ -117,8 +124,15 @@ namespace WorkingWithBD
                 !string.IsNullOrEmpty(textBox3.Text) && !string.IsNullOrWhiteSpace(textBox3.Text)&&
                 !string.IsNullOrEmpty(textBox5.Text) && !string.IsNullOrWhiteSpace(textBox5.Text))
             {
-                SportProductShop n1 = new SportProductShop();
-                n1.Update(textBox5.Text, textBox4.Text, textBox3.Text);
+                SportProduct n1 = new SportProduct()
+                {
+                    ID = Convert.ToInt32(textBox5.Text),
+                    Name = Convert.ToString(textBox4.Text),
+                    Price = Convert.ToDecimal(textBox3.Text)
+
+                };
+
+                n2.Update(n1);
             }
           
             else if (!string.IsNullOrEmpty(textBox5.Text) && !string.IsNullOrWhiteSpace(textBox5.Text))

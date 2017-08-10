@@ -56,27 +56,28 @@ namespace WorkingWithBD
         }
 
 
-        public void AddNewProduct(string tb1,string tb2)
+        public void AddNewProduct(SportProduct sp)
         {
 
             SqlCommand command = new SqlCommand("INSERT INTO [Products] (Name,Price)VALUES(@Name,@Price)", sqlConnection);
 
             sqlConnection.Open(); //открываем соединение с БД
+
             
-                command.Parameters.AddWithValue("Name", tb1);
-                command.Parameters.AddWithValue("Price",tb2);
+                command.Parameters.AddWithValue("Name", sp.Name);
+                command.Parameters.AddWithValue("Price",sp.Price);
                 command.ExecuteNonQuery();        
 
         }
 
-        public void Update(string tb1, string tb2,string tb3)
+        public void Update(SportProduct sp)
         {
 
             SqlCommand command = new SqlCommand("UPDATE [Products] SET [Name] = @Name, [Price]=@Price WHERE [ID]=@ID", sqlConnection);
             sqlConnection.Open(); //открываем соединение с БД
-            command.Parameters.AddWithValue("ID", tb1);
-            command.Parameters.AddWithValue("Name", tb2);
-            command.Parameters.AddWithValue("Price", tb3);
+            command.Parameters.AddWithValue("ID",sp.ID);
+            command.Parameters.AddWithValue("Name", sp.Name);
+            command.Parameters.AddWithValue("Price", sp.Price);
 
             command.ExecuteNonQuery();
       
