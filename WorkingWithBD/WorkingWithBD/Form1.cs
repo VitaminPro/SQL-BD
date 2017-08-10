@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -16,34 +11,32 @@ namespace WorkingWithBD
     public partial class Form1 : Form
     {
 
-        SqlConnection sqlConnection;
-
-
-
         public Form1()
-        {
+        {    
             InitializeComponent();
         }
 
-        private  async void button1_Click(object sender, EventArgs e)
+
+        private  void button1_Click(object sender, EventArgs e) //добавление
         {
+            
             if (!label7.Visible)
                 label7.Visible = false;
-
+            
 
             if (!string.IsNullOrEmpty(textBox1.Text) && !string.IsNullOrWhiteSpace(textBox1.Text) &&
                 !string.IsNullOrEmpty(textBox2.Text) && !string.IsNullOrWhiteSpace(textBox2.Text))
             {
-                SqlCommand command = new SqlCommand("INSERT INTO [Products] (Name,Price)VALUES(@Name,@Price)", sqlConnection);
-                command.Parameters.AddWithValue("Name", textBox1.Text);
-                command.Parameters.AddWithValue("Price", textBox2.Text);
-                await command.ExecuteNonQueryAsync();
+                SportProductShop n2 = new SportProductShop();
+                 n2.AddNewProduct(textBox1.Text, textBox2.Text);
+               
             }
             else
             {
                 label7.Visible = true;
                 label7.Text = "Поля  'Имя' и 'Цена' должны быть заполнены!";
             }
+            
         }
 
         private void tabPage2_Click(object sender, EventArgs e)
@@ -51,77 +44,71 @@ namespace WorkingWithBD
 
        }
 
-        private async void Form1_Load(object sender, EventArgs e)
+        private  void Form1_Load(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Ринат\Documents\Visual Studio 2015\Projects\WorkingWithBD\WorkingWithBD\Database.mdf;Integrated Security=True"; //получаем физическое расположение нашей базы данных
-            sqlConnection = new SqlConnection(connectionString); //создаем экземпляр класса и передаем в конструктор расположение БД
-            await sqlConnection.OpenAsync(); //открываем соединение с БД
-            SqlDataReader sqlReader = null; //получаем содержимое БД,SqlDataReader позволяет получать таблицу в табличном представлении,
-            SqlCommand command = new SqlCommand("SELECT * FROM [Products]", sqlConnection); //Пишем запрос, * позволяет или говорят нам, что мы будем считывать все колонки во всех строках, 2 парамметром передаем наше соединение в наш экземпляр класса
-
+            
+           
             //Обработчик исключений
             try
             {
-                sqlReader = await command.ExecuteReaderAsync(); //ExecuteReaderAsync считывает таблицу, await - совершенно точно
-                while(await sqlReader.ReadAsync())
+                SportProductShop n1 = new SportProductShop();
+                List<SportProduct> list =   n1.GetAllProducts();
+                 
+
+                foreach(SportProduct o in list )
                 {
-                    listBox1.Items.Add(Convert.ToString(sqlReader["ID"]) + "   " + Convert.ToString(sqlReader[ "Name"]) + "   " + Convert.ToString(sqlReader["Price"]));
+                
+                    listBox1.Items.Add(Convert.ToString(o.ID) +"   "+ Convert.ToString(o.Name) + "   " + Convert.ToString(o.Price));
                 }
+                   
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString(), ex.Source.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            finally //вызывает в любом случае если код try пройдёт или не пройдёт
-            {
-                if (sqlReader != null)
-                    sqlReader.Close();
-            }
-
+           
 
         }
 
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (sqlConnection != null && sqlConnection.State != ConnectionState.Closed)
-                sqlConnection.Close();
+
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (sqlConnection != null && sqlConnection.State != ConnectionState.Closed)
-                sqlConnection.Close();
+
         }
 
-        private async void обновитьToolStripMenuItem_Click(object sender, EventArgs e)
+        private  void обновитьToolStripMenuItem_Click(object sender, EventArgs e) //обновление
         {
+
+        
             listBox1.Items.Clear();
 
-            SqlDataReader sqlReader = null; //получаем содержимое БД,SqlDataReader позволяет получать таблицу в табличном представлении,
-            SqlCommand command = new SqlCommand("SELECT * FROM [Products]", sqlConnection); //Пишем запрос, * позволяет или говорят нам, что мы будем считывать все колонки во всех строках, 2 парамметром передаем наше соединение в наш экземпляр класса
-
-            //Обработчик исключений
             try
             {
-                sqlReader = await command.ExecuteReaderAsync(); //ExecuteReaderAsync считывает таблицу, await - совершенно точно
-                while (await sqlReader.ReadAsync())
+                SportProductShop n1 = new SportProductShop();
+                List<SportProduct> list = n1.GetAllProducts();
+
+
+                foreach (SportProduct o in list)
                 {
-                    listBox1.Items.Add(Convert.ToString(sqlReader["ID"]) + "   " + Convert.ToString(sqlReader["Name"]) + "   " + Convert.ToString(sqlReader["Price"]));
+
+                    listBox1.Items.Add(Convert.ToString(o.ID) + "   " + Convert.ToString(o.Name) + "   " + Convert.ToString(o.Price));
                 }
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString(), ex.Source.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            finally //вызывает в любом случае если код try пройдёт или не пройдёт
-            {
-                if (sqlReader != null)
-                    sqlReader.Close();
-            }
+
         }
 
-        private async void button2_Click(object sender, EventArgs e)
+        private  void button2_Click(object sender, EventArgs e) //Изменение
         {
+            
 
             if (!label8.Visible)
                 label8.Visible = false;
@@ -130,16 +117,10 @@ namespace WorkingWithBD
                 !string.IsNullOrEmpty(textBox3.Text) && !string.IsNullOrWhiteSpace(textBox3.Text)&&
                 !string.IsNullOrEmpty(textBox5.Text) && !string.IsNullOrWhiteSpace(textBox5.Text))
             {
-
-                SqlCommand command = new SqlCommand("UPDATE [Products] SET [Name] = @Name, [Price]=@Price WHERE [ID]=@ID",sqlConnection);
-              
-                command.Parameters.AddWithValue("ID", textBox5.Text);
-                command.Parameters.AddWithValue("Name", textBox4.Text);
-                command.Parameters.AddWithValue("Price", textBox3.Text);
-
-                await command.ExecuteNonQueryAsync();
-                
+                SportProductShop n1 = new SportProductShop();
+                n1.Update(textBox5.Text, textBox4.Text, textBox3.Text);
             }
+          
             else if (!string.IsNullOrEmpty(textBox5.Text) && !string.IsNullOrWhiteSpace(textBox5.Text))
                 {
 
@@ -151,19 +132,20 @@ namespace WorkingWithBD
                 label8.Visible = true;
                 label8.Text = "Поля  'Имя' или 'Цена' должны быть заполнены!";
             }
+            
 
         }
 
-        private async void button3_Click(object sender, EventArgs e)
+        private  void button3_Click(object sender, EventArgs e) //удаление по id
         {
+            
             if (!label9.Visible)
                 label9.Visible = false;
 
             if (!string.IsNullOrEmpty(textBox6.Text) && !string.IsNullOrWhiteSpace(textBox6.Text))
             {
-                SqlCommand command = new SqlCommand("DELETE FROM [Products] WHERE [Id]=@Id", sqlConnection);
-                command.Parameters.AddWithValue("Id", textBox6.Text);
-                await command.ExecuteNonQueryAsync();
+                SportProductShop n1 = new SportProductShop();
+                n1.Delete(Convert.ToInt32(textBox6.Text));
             }
 
             else

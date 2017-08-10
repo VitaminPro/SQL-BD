@@ -9,3 +9,14 @@ c:\users\ринат\documents\visual studio 2015\Projects\WorkingWithBD\WorkingW
 c:\users\ринат\documents\visual studio 2015\Projects\WorkingWithBD\WorkingWithBD\obj\Debug\WorkingWithBD.pdb
 c:\users\ринат\documents\visual studio 2015\Projects\WorkingWithBD\WorkingWithBD\bin\Debug\Database.mdf
 c:\users\ринат\documents\visual studio 2015\Projects\WorkingWithBD\WorkingWithBD\bin\Debug\Database_log.ldf
+D:\gitrinat\WorkingWithBD\WorkingWithBD\bin\Debug\WorkingWithBD.exe.config
+D:\gitrinat\WorkingWithBD\WorkingWithBD\obj\Debug\WorkingWithBD.exe
+D:\gitrinat\WorkingWithBD\WorkingWithBD\obj\Debug\WorkingWithBD.pdb
+D:\gitrinat\WorkingWithBD\WorkingWithBD\bin\Debug\Database.mdf
+D:\gitrinat\WorkingWithBD\WorkingWithBD\bin\Debug\Database_log.ldf
+D:\gitrinat\WorkingWithBD\WorkingWithBD\bin\Debug\WorkingWithBD.exe
+D:\gitrinat\WorkingWithBD\WorkingWithBD\bin\Debug\WorkingWithBD.pdb
+D:\gitrinat\WorkingWithBD\WorkingWithBD\obj\Debug\WorkingWithBD.csprojResolveAssemblyReference.cache
+D:\gitrinat\WorkingWithBD\WorkingWithBD\obj\Debug\WorkingWithBD.Form1.resources
+D:\gitrinat\WorkingWithBD\WorkingWithBD\obj\Debug\WorkingWithBD.Properties.Resources.resources
+D:\gitrinat\WorkingWithBD\WorkingWithBD\obj\Debug\WorkingWithBD.csproj.GenerateResource.Cache
